@@ -13,14 +13,14 @@ O objetivo deste projeto é criar uma fonte centralizada e de alta qualidade de 
 - [Entrevista Backend (PT)](interview-backend-pt.md)
 
 ### Bancos de Dados
-- [Entrevista NoSQL (EN)](backend-interview/interview-NoSQL.md)
-- [Entrevista NoSQL (PT)](backend-interview/interview-NoSQL-pt.md)
+- [Entrevista NoSQL (EN)](interview-NoSQL.md)
+- [Entrevista NoSQL (PT)](interview-NoSQL-pt.md)
 
 ### Linguagens de Programação
-- [Entrevista Go (EN)](backend-interview/interview-go.md)
-- [Entrevista Go (PT)](backend-interview/interview-go-pt.md)
-- [Entrevista JavaScript/Node.js (EN)](backend-interview/interview-javascript.md)
-- [Entrevista JavaScript/Node.js (PT)](backend-interview/interview-javascript-pt.md)
+- [Entrevista Go (EN)](interview-go.md)
+- [Entrevista Go (PT)](interview-go-pt.md)
+- [Entrevista JavaScript/Node.js (EN)](interview-javascript.md)
+- [Entrevista JavaScript/Node.js (PT)](interview-javascript-pt.md)
 
 ## Em Desenvolvimento
 Estamos trabalhando para adicionar mais conteúdo para as seguintes tecnologias:
