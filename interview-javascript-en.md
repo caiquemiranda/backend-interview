@@ -927,3 +927,177 @@
 
 	
 **[ Back to Top ⬆ ](#table-of-contents---express-js)**
+
+12. ### Como redirecionar para outras páginas do lado do servidor?
+
+Redirecionamentos são comuns no desenvolvimento da Web. Você pode criar um redirecionamento usando o método Response.redirect():<br/>
+```
+res.redirect('/go-there')
+//pode ser uma URL ou um caminho de arquivo
+res.redirect(301, '/go-there')
+```
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+13. ### Como o roteamento funciona no express?
+
+Roteamento é o processo de determinar o que deve acontecer quando uma URL é chamada, ou também quais partes do aplicativo devem manipular uma solicitação de entrada específica.<br/>
+
+No exemplo Hello World, usamos este código<br/>
+
+```
+app.get('/', function(req, res) {
+/* */
+})
+//Isso cria uma rota que mapeia o acesso à URL do domínio raiz / usando o método HTTP GET para a resposta que queremos fornecer.
+```
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+14. ### Quais são as tarefas que um middleware pode fazer?
+
+Funções de middleware podem executar as seguintes tarefas:<br/>
+
+Executar qualquer código.<br/>
+Fazer alterações na solicitação e nos objetos de resposta.<br/>
+Terminar o ciclo de solicitação-resposta.<br/>
+Chamar a próxima função de middleware na pilha.<br/>
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+15. ### Quais são os diferentes tipos de middleware?
+
+Um aplicativo Express pode usar os seguintes tipos de middleware:<br/>
+
+Middleware de nível de aplicativo<br/>
+Middleware de nível de roteador<br/>
+Middleware de tratamento de erros<br/>
+Middleware integrado<br/>
+Middleware de terceiros
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+16. ### Como servir ativos estáticos do express?
+
+É comum ter imagens, CSS e mais em uma subpasta pública e expô-los ao nível raiz:
+
+```
+const express = require('express')
+const app = express()
+
+app.use(express.static('public'))
+
+app.listen(3000, () => console.log('Server ready'))
+```
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+17. ### Como fornecer download de arquivo usando express?
+
+O Express fornece um método prático para transferir um arquivo como anexo: Response.download().<br/>
+
+Quando um usuário acessa uma rota que envia um arquivo usando esse método, os navegadores solicitarão o download.<br/>
+
+O método Response.download() permite que você envie um arquivo anexado à solicitação, e o navegador, em vez de mostrá-lo na página, o salvará no disco.<br/>
+```
+app.get('/', (req, res) => res.download('./file.pdf'))
+```
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+18. ### Como usar o método Response.cookie() para manipular seus cookies?
+
+Cookies são pequenos pedaços de dados enviados de um site e são armazenados no navegador do usuário enquanto ele navega naquele site. Toda vez que o usuário carrega o site de volta, o navegador envia os dados armazenados de volta ao site ou servidor, para distinguir a atividade anterior do usuário.
+
+```
+res.cookie('username', 'Adam')
+
+Este método aceita um terceiro parâmetro que contém várias opções:
+res.cookie('username', 'Adam', { domain: '.bangalore.com', path: '/administrator', secure: true })
+
+res.cookie('username', 'Adam', { expires: new Date(Date.now() + 900000), httpOnly: true })
+
+//limpar cookie
+res.clearCookie('username')
+```
+
+Os parâmetros mais úteis que você pode definir são:
+| Valor | Descrição |
+| ----- | ----------- |
+| domínio | o nome de domínio do cookie|
+|expires|define a data de expiração do cookie. Se ausente, ou 0, o cookie é um cookie de sessão|
+|httpOnly|define o cookie para ser acessível somente pelo servidor web. Veja HttpOnly|
+|maxAge|define o tempo de expiração em relação ao tempo atual, expresso em milissegundos|
+|path|o caminho do cookie. Padrão para /|
+|secure|Marca o cookie somente HTTPS|
+|signed|define o cookie para ser assinado|
+|sameSite|Valor de SameSite|
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+19. ### Como gerenciar sessões usando express?
+
+Usaremos o módulo express-session, que é mantido pela equipe Express. Quando implementado, cada usuário da sua API ou site receberá uma sessão exclusiva, e isso permite que você armazene o userstate. Como por padrão, as solicitações Express são sequenciais e nenhuma solicitação pode ser vinculada uma à outra. Não há como saber se essa solicitação vem de um cliente que já realizou uma solicitação anteriormente.
+```
+const express = require('express')
+const session = require('express-session')
+
+const app = express()
+app.use(session(
+'secret': '343ji43j4n3jn4jk3n'
+))
+```
+Todas as soluções armazenam o ID da sessão em um cookie e mantêm os dados do lado do servidor. O cliente receberá o ID da sessão em um cookie e o enviará junto com cada solicitação HTTP.
+
+Faremos referência a esse lado do servidor para associar o ID da sessão aos dados armazenados localmente.
+
+A memória é o padrão, não requer nenhuma configuração especial de sua parte, é a coisa mais simples, mas é destinada apenas para fins de desenvolvimento.
+
+A melhor escolha é um cache de memória como o Redis, para o qual você precisa configurar sua própria infraestrutura.
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+20. ### Como processar formulários usando o Express?
+
+Os dados do formulário serão enviados no corpo da solicitação POST.
+
+Para extraí-los, você usará o middleware express.urlencoded(), fornecido pelo Express:
+```
+const express = require('express')
+const app = express()
+
+app.use(express.urlencoded())
+```
+Agora você precisa criar um endpoint POST na rota /submit-form, e todos os dados estarão disponíveis em Request.body:
+```
+app.post('/submit-form', (req, res) => {
+const username = req.body.username
+//...
+res.end()
+})
+```
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
+
+21. ### Como permitir CORs no Expressjs Explique com um exemplo?
+
+Para permitir CORS em Express.js, adicione o seguinte código em server.js:
+```
+app.all('*', function(req, res, next) {
+res.set('Access-Control-Allow-Origin', '*');
+res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+if ('OPTIONS' == req.method) return res.send(200);
+next();
+});
+```
+ou você pode instalar um pacote chamado cors, CORS é um pacote node.js para fornecer um middleware Connect/Express que pode ser usado para habilitar CORS com várias opções.[link](https://www.npmjs.com/package/cors)
+```
+var express = require('express')
+var cors = require('cors')
+var app = express()
+
+app.use(cors())
+```
+
+**[ Voltar ao topo ⬆ ](#table-of-contents---express-js)**
