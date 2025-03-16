@@ -9,8 +9,8 @@ O objetivo deste projeto é criar uma fonte centralizada e de alta qualidade de 
 ## Conteúdo Disponível
 
 ### Entrevistas Gerais de Backend
-- [Entrevista Backend (EN)](backend-interview/interview-backend-en.md)
-- [Entrevista Backend (PT)](backend-interview/interview-backend-pt.md)
+- [Entrevista Backend (EN)](interview-backend-en.md)
+- [Entrevista Backend (PT)](interview-backend-pt.md)
 
 ### Bancos de Dados
 - [Entrevista NoSQL (EN)](backend-interview/interview-NoSQL.md)
